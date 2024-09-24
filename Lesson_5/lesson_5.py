@@ -27,7 +27,7 @@ if response.status_code == 200:
     data = response.json()
 
     # Save the data to a JSON file for further processing
-    with open("weather_data.json", 'w') as f:
+    with open("Output/weather_data.json", 'w') as f:
         json.dump(data, f, indent=4)
 
     print("Weather data fetched successfully!")
@@ -40,7 +40,7 @@ import matplotlib.pyplot as plt
 from fpdf import FPDF
 
 # Load the weather data from the JSON file
-with open('weather_data.json', 'r') as f:
+with open('Output/weather_data.json', 'r') as f:
     data = json.load(f)
 
 # Extract the hourly data for temperature, humidity, and wind speed
@@ -121,6 +121,5 @@ pdf.image("Output/wind_speed_plot.png", x=10, y=40, w=190)
 pdf.output("Output/weather_report.pdf")
 
 print("Weather report PDF generated successfully!")
-
 
 
