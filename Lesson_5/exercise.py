@@ -26,7 +26,7 @@ import operator
 import json
 
 # API URL for weather data (Berlin, for example)
-api_url = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m'
+api_url = 'https://api.open-meteo.com/v1/forecast?latitude=32.7102759&longitude=-96.9470196&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m'
 
 # Send request to the Open-Meteo API
 response = requests.get(api_url)
