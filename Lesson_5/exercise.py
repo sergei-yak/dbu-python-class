@@ -63,5 +63,14 @@ with open(csv_file, mode='w', newline='') as file:
     for i in range(len(date_time)):
         writer.writerow([date_time[i], temp[i], humid[i], wind_speed[i]])
 
+#	•	Sort the CSV data by a user-specified column (e.g., by temperature or wind_speed) before writing to the file.
+with open(csv_file, mode='r') as file:
+    data_to_sort = file.readlines()
+    reader = csv.DictReader(file)
 
+    data = list(reader)
+
+# Sort the data by the temp
+sorted_data = sorted(data, key=lambda row: float(row['temp']))
+print(sorted_data)
 
