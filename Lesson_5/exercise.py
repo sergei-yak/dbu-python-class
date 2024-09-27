@@ -35,25 +35,22 @@ response = requests.get(api_url)
 if response.status_code == 200:
     data = response.json()
     # Save the data to a JSON file for further processing
-    with open("Output/my_test.json", 'w') as f:
+    with open("Lesson_5/output/my_weather.json", 'w') as f:
         json.dump(data, f, indent=4)
 
 # Parse the JSON Data:
-# Convert the JSON response into a Python dictionary.
 # Load the weather data from the JSON file
-with open("Output/my_test.json", 'r') as f:
+with open("Lesson_5/output/my_weather.json", 'r') as f:
     data_dict = json.load(f)
 
-print(data_dict)
 #	•	Extract relevant fields (e.g., temperature, humidity, wind speed) and organize them into a list of dictionaries for easier handling.
 date_time = data_dict['hourly']['time']
 temp = data_dict['hourly']['temperature_2m']
 humid = data_dict['hourly']['relative_humidity_2m']
 wind_speed = data_dict['hourly']['wind_speed_10m']
 
-print(temp)
 #	•	Write the extracted data into a CSV file with appropriate headers (e.g., temperature, humidity, wind_speed).
-csv_file = 'Output/my_weather_data.csv'
+csv_file = 'Lesson_5/output/my_weather_data.csv'
 
 with open(csv_file, mode='w', newline='') as file:
     writer = csv.writer(file)
@@ -65,12 +62,11 @@ with open(csv_file, mode='w', newline='') as file:
 
 #	•	Sort the CSV data by a user-specified column (e.g., by temperature or wind_speed) before writing to the file.
 with open(csv_file, mode='r') as file:
-    data_to_sort = file.readlines()
     reader = csv.DictReader(file)
-
     data = list(reader)
 
 # Sort the data by the temp
 sorted_data = sorted(data, key=lambda row: float(row['temp']))
-print(sorted_data)
+for i in sorted_data:
+    print(i)
 
